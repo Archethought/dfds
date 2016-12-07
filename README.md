@@ -104,36 +104,36 @@ myfile
 ```
 N.B. Many images create Volume maps by default for persisting data e.g. registry, mariadb, mysql etc.
 
-**Status commands**
+### Status commands
 
 In the video, three terminals are up, command and two watch terminals
 
-Containers with state running
+**Containers with state running**
 ```
 docker ps
 ```
 
-Containers with all states
+**Containers with all states**
 ```
 docker ps -a
 ```
 
-Containers output formatted
+**Containers output formatted**
 ```
 docker ps -a --format "{{.ID}}: {{.Image}} {{.Names}} {{.Status}} {{.Ports}} {{.Command}}"
 ```
 
-Containers under watch
+**Containers under watch**
 ```
 watch 'docker ps -a --format "{{.ID}}: {{.Image}} {{.Names}} {{.Status}} {{.Ports}} {{.Command}}"'
 ```
 
-Image status
+**Image status**
 ```
 docker images
 ```
 
-Image under watch status
+**Image under watch status**
 ```
 watch docker images
 ```
