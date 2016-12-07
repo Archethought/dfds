@@ -1,4 +1,4 @@
-## Docker for Data Scientists - Start Building Your Own Toolbox
+## Start Building Your Own Toolbox
 
 A local registry speeds things up and allows you to commit local versions of your images. Let's begin there.
 
