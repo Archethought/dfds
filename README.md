@@ -1,4 +1,6 @@
-## Docker for Data Scientists
+## Docker for Data Scientists - Start Building Your Own Toolbox
+
+A local registry speeds things up and allows you to commit local versions of your images. Let's begin there.
 
 ### Setup a Local Registry
 
@@ -94,7 +96,7 @@ We are in our container, new directory /data is here
 # touch myfile
 # exit
 
-<Look in your Mac or Windows directory and “mayflies” should be there>
+<Look in your Mac or Windows directory and the file "myflies" should be there>
 
 # cd /Users/dixon/working/dfds/mydata
 # ls
@@ -103,6 +105,7 @@ myfile
 N.B. Many images create Volume maps by default for persisting data e.g. registry, mariadb, mysql etc.
 
 **Status commands**
+
 In the video, three terminals are up, command and two watch terminals
 
 Containers with state running
