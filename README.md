@@ -71,7 +71,7 @@ docker run -i -t --name sandbox /bin/bash
 # exit
 ```
 
-<We stopped the container, removed it, “run” new one and data is gone>
+We stopped the container, removed it, “run” new one and data is gone
 
 ```
 docker stop sandbox
@@ -80,15 +80,16 @@ docker rm sandbox
 
 **Create a Volume map for persisting data**
 
-<On your Mac or Windows machine prompt>
+On your Mac or Windows machine prompt
 
 ```
 mkdir mydata
 docker run -i -t  -v /Users/dixon/working/dfds/mydata:/data --name sandbox ubuntu /bin/bash
 ```
 
-<We are in our container, new directory /data is here>
+We are in our container, new directory /data is here
 
+```
 # cd /data
 # touch myfile
 # exit
@@ -99,16 +100,16 @@ docker run -i -t  -v /Users/dixon/working/dfds/mydata:/data --name sandbox ubunt
 # ls
 myfile
 ```
-
 N.B. Many images create Volume maps by default for persisting data e.g. registry, mariadb, mysql etc.
 
 **Status commands**
-<In the video, three terminals are up, command and two watch terminals>
+In the video, three terminals are up, command and two watch terminals
 
 Containers with state running
 ```
 docker ps
 ```
+
 Containers with all states
 ```
 docker ps -a
@@ -124,15 +125,15 @@ Containers under watch
 watch 'docker ps -a --format "{{.ID}}: {{.Image}} {{.Names}} {{.Status}} {{.Ports}} {{.Command}}"'
 ```
 
-Images
+Image status
 ```
 docker images
 ```
 
-Images under watch
+Image under watch status
 ```
 watch docker images
 ```
 
-N.B. “watch” is a Linux command. Mac use Homebrew. Windows use Cygwin.
+N.B. "watch" is a Linux command. Mac use Homebrew. Windows use Cygwin.
 
