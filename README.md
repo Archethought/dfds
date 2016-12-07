@@ -25,7 +25,7 @@ docker stop sandbox
 docker exec -i -t --name sandbox /bin/bash
 ```
 
-<connect fails - container not running, cannot execute>
+connect fails - container not running, cannot execute
 
 **State: Image and stopped container**
 
@@ -35,18 +35,18 @@ docker exec -i -t --name sandbox /bin/bash
 # 
 ```
 
-<connect success - container can run /bin/bash>
-<keep this container open>
+connect success - container can run /bin/bash
+keep this container open
 
 **Where does the data go?**
 
-<In container, touch a file>
+In container, touch a file
 
 ```
 # touch myfile
 ```
 
-<We now have a zero length file>
+We now have a zero length file
 
 ```
 docker stop sandbox
@@ -57,7 +57,7 @@ docker exec -i -t --name sandbox /bin/bash
 myfile
 ```
 
-<We stopped the container, started it and data still there>
+We stopped the container, started it and data still there
 
 ```
 # exit
