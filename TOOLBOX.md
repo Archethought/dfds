@@ -20,6 +20,8 @@ docker run -i -t  --name sandbox ubuntu /bin/bash
 # exit
 ```
 
+### Images and Containers - Key Commands
+
 **State: Image and stopped container**
 
 ```
@@ -40,7 +42,7 @@ docker exec -i -t --name sandbox /bin/bash
 connect success - container can run /bin/bash
 keep this container open
 
-**Where does the data go?**
+### Where does the data go?
 
 In container, touch a file
 
@@ -103,6 +105,24 @@ We are in our container, new directory /data is here
 myfile
 ```
 N.B. Many images create Volume maps by default for persisting data e.g. registry, mariadb, mysql etc.
+
+**Standard Input and Standard Output**
+
+Specify which pipes will be accepted.
+
+
+```
+docker run -a stdin -a stdout -i -t ubuntu /bin/bash
+```
+
+Now try pushing data into the container and outputting it back to the console
+
+```
+echo test | docker run -i busybox cat
+```
+
+
+### Commit your own image versions
 
 ### Status commands
 
