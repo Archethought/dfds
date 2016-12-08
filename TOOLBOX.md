@@ -108,21 +108,37 @@ N.B. Many images create Volume maps by default for persisting data e.g. registry
 
 **Standard Input and Standard Output**
 
-Specify which pipes will be accepted.
+
+Simple example: try pushing data into the container and outputting it back to the console
+
+```
+echo test | docker run -i busybox cat
+```
+
+For safety/complteness, specify which pipes will be accepted.
 
 
 ```
 docker run -a stdin -a stdout -i -t ubuntu /bin/bash
 ```
 
-Now try pushing data into the container and outputting it back to the console
-
-```
-echo test | docker run -i busybox cat
-```
-
-
 ### Commit your own image versions
+
+Let's say you are working quickly and execute several configuration commands:
+
+```
+pip install numpy
+pip install scipy
+pip install matplotlib
+```
+
+Here's where Docker helps you save and version your own sandbox. Using **commit** you can save this version like so:
+
+```
+docker commit <containerId> localhost:5000/sandbox:numerics1
+```
+
+There is now a new image in your local repo called sandbox, with a version tag reminding you what you did to that container.
 
 ### Status commands
 
