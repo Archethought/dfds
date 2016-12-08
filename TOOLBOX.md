@@ -98,7 +98,7 @@ We are in our container, new directory /data is here
 # touch myfile
 # exit
 
-<Look in your Mac or Windows directory and the file "myflies" should be there>
+<Look in your Mac or Windows directory and the file "myfile" should be there>
 
 # cd /Users/dixon/working/dfds/mydata
 # ls
@@ -115,7 +115,7 @@ Simple example: try pushing data into the container and outputting it back to th
 echo test | docker run -i busybox cat
 ```
 
-For safety/complteness, specify which pipes will be accepted.
+For safety/completeness, specify which pipes will be accepted.
 
 
 ```
@@ -130,15 +130,21 @@ Let's say you are working quickly and execute several configuration commands:
 pip install numpy
 pip install scipy
 pip install matplotlib
+apt-get install python-pip python-dev libmysqlclient-dev 
 ```
 
-Here's where Docker helps you save and version your own sandbox. Using **commit** you can save this version like so:
+Here's where Docker helps you save and version your own sandbox.  
+Using **commit** you can save this version like so:
 
 ```
 docker commit <containerId> localhost:5000/sandbox:numerics1
 ```
 
-There is now a new image in your local repo called sandbox, with a version tag reminding you what you did to that container.
+There is now a new image in your local repo called sandbox, with a version tag reminding you what you did to that container.  
+Imagine your versions:
+* sandbox:numpy
+* sandbox:mysql
+* sandbox:plotter
 
 ### Status commands
 
