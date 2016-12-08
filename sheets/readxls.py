@@ -8,6 +8,7 @@ Program takes a command line parameter
 Usage: python readxls.py some_excel.xlsx
 
 N.B. There is a bug in openpyxl that looks like this:
+https://bitbucket.org/openpyxl/openpyxl/issues/739/openpyxl-load_workbook-attributeerror
 
 ---
 
