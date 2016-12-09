@@ -35,7 +35,7 @@ connect fails - container not running, cannot execute
 
 ```
 docker start sandbox
-docker exec -i -t --name sandbox /bin/bash
+docker exec -i -t sandbox /bin/bash
 # 
 ```
 
@@ -55,7 +55,7 @@ We now have a zero length file
 ```
 docker stop sandbox
 docker start sandbox
-docker exec -i -t --name sandbox /bin/bash
+docker exec -i -t sandbox /bin/bash
 
 # ls
 myfile
@@ -68,7 +68,7 @@ We stopped the container, started it and data still there
 
 docker stop sandbox
 docker rm sandbox
-docker run -i -t --name sandbox /bin/bash
+docker run -i -t --name sandbox ubuntu /bin/bash
 
 # ls
 <nothing here>
