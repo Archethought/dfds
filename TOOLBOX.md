@@ -35,7 +35,7 @@ connect fails - container not running, cannot execute
 
 ```
 docker start sandbox
-docker exec -i -t --name sandbox /bin/bash
+docker exec -i -t sandbox /bin/bash
 # 
 ```
 
