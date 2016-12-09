@@ -68,7 +68,7 @@ We stopped the container, started it and data still there
 
 docker stop sandbox
 docker rm sandbox
-docker run -i -t --name sandbox /bin/bash
+docker run -i -t --name sandbox ubuntu /bin/bash
 
 # ls
 <nothing here>
