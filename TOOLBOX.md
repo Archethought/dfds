@@ -55,7 +55,7 @@ We now have a zero length file
 ```
 docker stop sandbox
 docker start sandbox
-docker exec -i -t --name sandbox /bin/bash
+docker exec -i -t sandbox /bin/bash
 
 # ls
 myfile
