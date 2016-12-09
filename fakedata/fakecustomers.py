@@ -10,4 +10,6 @@ f = Factory.create()
 
 with open('fakedata.csv', 'wb') as csvfile:
   csvwriter = csv.writer(csvfile, dialect='excel', delimiter=',', quotechar='"')
-  csvwriter.writerow([f.name(),f.street_address(),f.email(),f.company()])
+  row = [f.name(),f.street_address(),f.email(),f.company()]
+  csvwriter.writerow(row)
+  print row
