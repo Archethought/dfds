@@ -16,7 +16,7 @@ docker push localhost:5000/ubuntu
 docker rmi localhost:5000/ubuntu
 docker pull ubuntu
 
-docker run -i -t  --name sandbox ubuntu /bin/bash
+docker run -i -t sandbox ubuntu /bin/bash
 # exit
 ```
 
