@@ -77,6 +77,7 @@ docker exec -i -t sandbox /bin/bash
 ```
 
 connect success - container can run /bin/bash  
+
 Keep this container open for data location.
 
 ### Understand data locality and movement
@@ -118,7 +119,7 @@ docker run -i -t --name sandbox ubuntu /bin/bash
 # exit
 ```
 
-You stopped the container, removed it, executed ** docker run** to create a new container and the data file is not there.
+You stopped the container, removed it, executed **docker run** to create a new container and the data file is not there.
 
 ```
 docker stop sandbox
@@ -151,10 +152,10 @@ myfile
 ```
 N.B. Many images create Volume maps by default for persisting data e.g. registry, mariadb, mysql etc.  
 
+**Standard Input and Standard Output**  
+
 **Problem:**  I want to capture standard input and stream data through the container, taking the output to another step.  
 **Solution:** Use standard input and standard output to push data into and take it out of a container.  
-
-**Standard Input and Standard Output**  
 
 Simple example: try pushing data into the container and outputting it back to the console  
 
@@ -167,10 +168,11 @@ For safety/completeness, you can specify which pipes will be accepted.
 ```
 docker run -a stdin -a stdout -i -t ubuntu /bin/bash
 ```
-**Problem:**  I want to save the work I have done modifying my sandbox and start that image again in the future.  
-**Solution:** Use **docker commit** to create a local version of the image. This is different than creating a new Dockerfile, and is a simple and quick way to save your changes. Use a new Dockerfile when really making something new and repeatable to share.  
 
 ### Commit your own image versions
+
+**Problem:**  I want to save the work I have done modifying my sandbox and start that image again in the future.  
+**Solution:** Use **docker commit** to create a local version of the image. This is different than creating a new Dockerfile, and is a simple and quick way to save your changes. Use a new Dockerfile when really making something new and repeatable to share.  
 
 Let's say you are working quickly and execute several configuration commands:
 
