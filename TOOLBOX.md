@@ -1,9 +1,9 @@
 ## Start Building Your Own Toolbox
 
+### Setting up and using a Local Registry
+
 **Problem:**  Docker downloads are time consuming, bandwidth intensive.  
 **Solution:** Use a Local Docker Registry.
-
-### Setup a Local Registry
 
 A local registry speeds things up and allows you to commit local versions of your images. Let's begin there.
 
@@ -27,7 +27,10 @@ i-was-here
 # exit
 ```
 
-### Images and Containers
+### Images vs. Containers
+
+Docker Images are used to create Containers.  
+Containers come and go, Images remain in the Registry.  
 
 **Problem:**  I ran a container and can't find my files.  
 **Solution:** You might have run the image twice. Here's how that happens and how you can avoid that.
@@ -50,6 +53,12 @@ docker run -i -t ubuntu /bin/bash
 Hey?!? Where's my stuff?!? The file 'i-was'here' is gone!
 Executing **docker run** always creates a **new** container. Observe you now have two containers, not one, that came from the ubuntu image.
 
+```
+CONTAINER ID    IMAGE       COMMAND          CREATED             STATUS                      PORTS            NAMES
+c58660d8c019    ubuntu      "/bin/bash"      11 minutes ago      Exited (0) 3 seconds ago                     sandbox
+748bbf68455d    ubuntu      "/bin/bash"      32 minutes ago      Exited (0) 32 minutes ago                    gigantic_wright
+```
+
 **Trick:** If you name your containers in a consistent way (sandbox, datacleaner, tensor...), you might catch yourself trying to create the same container twice, because you will get an error trying to use the same name again.  
 
 **Problem:**  I can't execute a shell in a running container.  
@@ -70,18 +79,18 @@ docker exec -i -t sandbox /bin/bash
 connect success - container can run /bin/bash  
 Keep this container open for data location.
 
-### Where does the data go?
+### Understand data locality and movement
 
 **Problem:**  I created data files and am not sure where they actually are. Are files in the container also on available my host file system?  
 **Solution:** Container file system is **not** the same as the host filesystem. But files do exist on the container filesystem until that container is removed using **docker rm** or similar.  
 
-Let's prove this. In the container, touch a file
+Prove this. In the container, touch a file
 
 ```
 # touch myfile
 ```
 
-We now have a zero length file inside the container.  
+There is now a zero length file inside the container.  
 In another terminal, try and search for the file 'myfile' on your host filesystem.  
 You have proved it is not on your local filesystem.  
 
@@ -96,7 +105,7 @@ docker exec -i -t sandbox /bin/bash
 myfile
 ```
 
-We stopped the container, started it and 'myfile' is still there.
+You stopped the container, started it and 'myfile' is still there.
 
 ```
 # exit
@@ -109,7 +118,7 @@ docker run -i -t --name sandbox ubuntu /bin/bash
 # exit
 ```
 
-We stopped the container, removed it, executed ** docker run** to create a new container and the data file is not there.
+You stopped the container, removed it, executed ** docker run** to create a new container and the data file is not there.
 
 ```
 docker stop sandbox
@@ -127,7 +136,7 @@ mkdir mydata
 docker run -i -t  -v /Users/dixon/working/dfds/mydata:/data --name sandbox ubuntu /bin/bash
 ```
 
-We are in our container, we see the new directory /data is here. It was created automatically for you.
+You are in our container, you see the new directory /data is here. It was created automatically for you.
 
 ```
 # cd /data
@@ -172,8 +181,8 @@ pip install matplotlib
 apt-get install python-pip python-dev libmysqlclient-dev 
 ```
 
-Here's where Docker helps you save and version your own sandbox.  
-Using **commit** you can save this version like so:
+Docker helps you save and version your own sandbox.  
+Using **docker commit** you can save your version like so:
 
 ```
 docker commit <containerId> localhost:5000/sandbox:numerics1
@@ -185,10 +194,10 @@ Imagine your versions:
 * sandbox:mysql
 * sandbox:plotter
 
+### Status commands and visualizing your Docker environment
+
 **Problem:**  It's hard to visualize the difference between containers and images and what is in existence.  
 **Solution:** Use multiple terminals and the Linux 'watch' command to see changes live as you make them.  
-
-### Status commands
 
 In the video, three terminals are up, command and two watch terminals
 
