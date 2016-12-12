@@ -119,25 +119,26 @@ docker run -i -t --name sandbox ubuntu /bin/bash
 # exit
 ```
 
-You stopped the container, removed it, executed **docker run** to create a new container and the data file is not there.
+You stopped the container with **docker stop**, removed it with **docker rm** and executed **docker run** to create a new container. Because you started a new container the data file 'myfile' is not there. This is a completely new container and filesystem.
 
 ```
 docker stop sandbox
 docker rm sandbox
 ```
+
 **Problem:**  I have large data sets and don't want to copy them into the container, this double wastes space.  
-**Solution:** Create a Docker Volume mapped from the container to the local host filesystem.  
+**Solution:** Create a Docker Volume which maps a directory from the host file system (Windows, Mac, Linux) to the container file system.
 
 **Create a Volume map for persisting data**  
 
-On your Mac or Windows machine prompt, create a folder to hold the data set. The start a container with a mapped Docker Volume.
+On your Mac or Windows machine prompt, create a folder to hold a test data set. Then start a container with using the -v option to map a Docker Volume from the host filesystem '/Users/dixon/working/dfds/mydata' to the container filesystem '/data'.
 
 ```
 mkdir mydata
 docker run -i -t  -v /Users/dixon/working/dfds/mydata:/data --name sandbox ubuntu /bin/bash
 ```
 
-You are in our container, you see the new directory /data is here. It was created automatically for you.
+The new container has started. Check to see the new directory /data is here. It was created automatically for you by Docker. Create a file in that directory, we want to see if it appears in the host filesystem.
 
 ```
 # cd /data
@@ -154,16 +155,16 @@ N.B. Many images create Volume maps by default for persisting data e.g. registry
 
 **Standard Input and Standard Output**  
 
-**Problem:**  I want to capture standard input and stream data through the container, taking the output to another step.  
+**Problem:**  I want to stream data through the container, sending the output to the next workflow step.  
 **Solution:** Use standard input and standard output to push data into and take it out of a container.  
 
-Simple example: try pushing data into the container and outputting it back to the console  
+Simple example: try sending data into the container using standard input and outputting it back to the console using the 'cat' command to standard output.  
 
 ```
 echo test | docker run -i busybox cat
 ```
 
-For safety/completeness, you can specify which pipes will be accepted.
+You can completely specify which pipes will be accepted.
 
 ```
 docker run -a stdin -a stdout -i -t ubuntu /bin/bash
@@ -171,7 +172,7 @@ docker run -a stdin -a stdout -i -t ubuntu /bin/bash
 
 ### Commit your own image versions
 
-**Problem:**  I want to save the work I have done modifying my sandbox and start that image again in the future.  
+**Problem:**  I want to save the work I have done modifying my sandbox and **docker run** that image again in the future.  
 **Solution:** Use **docker commit** to create a local version of the image. This is different than creating a new Dockerfile, and is a simple and quick way to save your changes. Use a new Dockerfile when really making something new and repeatable to share.  
 
 Let's say you are working quickly and execute several configuration commands:
