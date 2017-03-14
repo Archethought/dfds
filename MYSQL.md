@@ -5,10 +5,10 @@
 docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret -d mysql:8
 ```
 
-**access the mysql command line**
+**access the mysql command line (Docker for Mac you may use 'localhost')**
 
 ```
-mysql -u root -h 192.168.99.100 -p
+mysql -u root -h 192.168.99.100 -P 3306 --protocol=tcp  -p
 ```
 
 **Connect to it using Docker Container**
