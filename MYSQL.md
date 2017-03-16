@@ -1,6 +1,6 @@
 # Starting and connecting to a MySQL Docker container
 
-In this exercise we're going to start a Docker container running MySQL, and then show three different ways to connect to the container: from the `mysql` command line to on your local machine, directly on the Docker container that we create here, and finally from a second Docker container.
+In this exercise we're going to start a Docker container running MySQL, and then show three different ways to connect to the container; from the `mysql` command line on your local machine, directly on the Docker container that we create here, and finally from a second Docker container that we will create later in the exercise.
 
 ## Start the MySQL database container
 
@@ -84,3 +84,5 @@ This command is a little more involved, but we'll try to explain what each param
 | `--rm` | This will remove the new container once we exit it. This helps from leaving stray containers on your system. |
 | `mysql` | This is the image our new container will be based on. |
 | `sh -c 'exec mysql -h mysqlerver -P 3306 --protocol tcp -u root -p'` | This is the command that we want to run in our new container. Here we're using the `sh` command to spawn a shell and the passing it the string to execute. In this case we're connecting to the MySQL server running on host *mysqlserver* which is the alias we used in the previous link parameter. |
+
+Windows users, since we're running the command with `-it` if there are any TTY errors, you will need to prefix the statement with `winpty` like we did earlier.
