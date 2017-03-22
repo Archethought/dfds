@@ -1,0 +1,14 @@
+# Docker compose YAML file to start an elk container
+elk:
+  # using elk:521, not the latest, due to https://github.com/spujadas/elk-docker/issues/120
+  image: sebp/elk:521
+  ports:
+    - "5601:5601"
+    - "9200:9200"
+    - "5044:5044"
+  volumes:
+    # mount the dfds project's elk dir as /data on the container
+    # CHANGE THIS to point to where you've downloaded https://github.com/Archethought/dfds/tree/master/elk
+    # format LOCAL:CONTAINER, so change LOCAL, leave :/data
+    - ~/dev/projects/data/dfds/elk:/data
+
