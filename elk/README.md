@@ -67,4 +67,4 @@ THEN,
 1. Change the filter from 'logstash-*' to just '*' and hit return.  You should see a drop down below where you can pick @timestamp.
 1. Select the `create` button.
 
-![kibana window](https://github.com/Archethought/dfds/edit/master/images/kibana_1.png "Initial Kibana window")
+![kibana window](https://github.com/Archethought/dfds/blob/master/images/kibana_1.png "Initial Kibana window")
