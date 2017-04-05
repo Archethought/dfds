@@ -58,7 +58,7 @@ python transform.py
 ### Start a logstash pipeline
 Enter the elk container and start logstash (assume "elk_elk_1" is the name of your container):
 ```
-docker exec -it elk_elk_1 \bin\bash
+docker exec -it elk_elk_1 /bin/bash
 /opt/logstash/bin/logstash -f /data/csvPipe.conf
 ```
 For the command above to work, you need to either copy the conf file into your data directory and execute from there, or otherwise specify the proper paths.
