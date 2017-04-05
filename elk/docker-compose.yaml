@@ -1,7 +1,6 @@
 # Docker compose YAML file to start an elk container
 elk:
-  # using elk:521, not the latest, due to https://github.com/spujadas/elk-docker/issues/120
-  image: sebp/elk:521
+  image: sebp/elk:latest
   ports:
     - "5601:5601"
     - "9200:9200"
