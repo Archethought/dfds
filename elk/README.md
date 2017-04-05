@@ -15,11 +15,11 @@ sudo docker run -d -p 5601:5601 -p 9200:9200 -p 5044:5044 -v /local/path:/data -
 * 5044 (Logstash Beats interface, receives logs from Beats such as Filebeat – see the Forwarding logs with Filebeat section).
 
 ---
-(3/21/2017) There is an error in the latest elk version; specifying version 521, i.e., "elk:521", avoids this unpleasantry. 
+(3/21/2017) There is an [error](https://github.com/docker-library/elasticsearch/issues/111) in the latest elk version; specifying version 521, i.e., "elk:521", avoids this unpleasantry. 
 (4/4/2017) The error appears to be resolved.
 
 
-An alternate, convenient, way to start the seb/elk image as a container, instead of using `docker run ....`, you can also use a "docker compose" file. There is a docker-compose.yaml file in the [dfds/elk](https://github.com/Archethought/dfds/tree/master/elk) repository.
+An alternate, convenient, way to start the seb/elk image as a container, instead of using `docker run ....`, you can also use a "docker compose" file. There is a docker-compose.yml file in the [dfds/elk](https://github.com/Archethought/dfds/tree/master/elk) repository.
 Create a file named `docker-compose.yml` (It's a YAML file), that looks like this:
 ```
 elk:
