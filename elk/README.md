@@ -40,7 +40,7 @@ Then, invoke it with the `docker-compose` command:
 ```
 docker-compose up
 ```
-Unfortunately, you apparently have little flexibility on naming the container. For the case above, the container will be named `elk_elk_1'
+Unfortunately, you apparently have little flexibility on naming the container. For the case above, the container will be named `elk_elk_1`
 
 
 ### Start a logstash pipeline
@@ -52,7 +52,7 @@ Note that you will need to modify this file and above command if you did not mou
 
 THEN, 
 1. Go to a browser on your host machine and bring up the Kibana port: http://localhost:5601. It should default to the management console.
-1. Change the filter from 'logstash-*' to just '*' and hit return.  You should see a drop down below where you can pick datetime. (See picture below.)
+1. Change the filter from `logstash-*` to just `*` and hit return.  You should see a drop down below where you can pick datetime. (See picture below.)
 1. Select the `create` button.
 
 ![kibana window](https://github.com/Archethought/dfds/blob/master/images/kibana_1a.png "Initial Kibana window")
