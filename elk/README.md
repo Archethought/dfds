@@ -2,6 +2,18 @@
 [Elastic Search](https://www.elastic.co/) - [Logstash](https://www.elastic.co/products/logstash) - [Kanbana](https://www.elastic.co/products/kibana)  
 The instructions for running ELK on Docker are [here](http://elk-docker.readthedocs.io/)
 
+### Bug mitigation
+Before invoking the container, use:
+```
+sudo sysctl -w vm.max_map_count=262144
+```
+Although [issue 111](https://github.com/docker-library/elasticsearch/issues/111) is closed, the problem persists.
+The error manifests as 
+```
+Exception in thread "main" java.lang.RuntimeException: bootstrap checks failed
+initial heap size [268435456] not equal to maximum heap size [2147483648]; this can cause resize pauses and prevents mlockall from locking the entire heap
+max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+```
 
 ### Invoke the Container
 Simple example
